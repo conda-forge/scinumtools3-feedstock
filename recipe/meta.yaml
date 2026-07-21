@@ -1,5 +1,5 @@
 {% set name = "scinumtools3" %}
-{% set version = "0.5.14" %}
+{% set version = "0.6.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/vrtulka23/scinumtools3/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: e41e06a328c64458d98cddffcfec20c9fc883b8ae4c2305efe767f8b154993af
+  sha256: 0c2ee00b09bca05b3502a52465df3380f045aa875518c89b22840ce76edaaf42
 
 build:
   number: 0
@@ -22,7 +22,6 @@ build:
     # Run CTest
     - ctest --test-dir build --output-on-failure  # [unix]
     - ctest --test-dir build -C Release --output-on-failure -V  # [win]
-    
 requirements:
   build:
     - {{ compiler('cxx') }}
@@ -44,7 +43,7 @@ requirements:
 test:
   imports:
     - scinumtools3
-    
+
 about:
   home: https://github.com/vrtulka23/scinumtools3
   summary: Python bindings for the SciNumTools3 C++ numerical library.
