@@ -10,7 +10,7 @@ source:
   sha256: c41ce6d6eb4e7f91ae7416f6364c324d382b2487e8303b78dc19a1e176c222ae
 
 build:
-  number: 0
+  number: 1
   script:
     # Unix
     - export CMAKE_BUILD_PARALLEL_LEVEL=1  # [unix]
