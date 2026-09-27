@@ -1,5 +1,5 @@
 {% set name = "scinumtools3" %}
-{% set version = "0.8.0" %}
+{% set version = "0.8.4" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/vrtulka23/scinumtools3/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: cfb91ae6c62a35969d656f908795ded3ad49f855353ea4e829dedbdedaea308c
+  sha256: a1c3adef8cd77becf4b37e6b476270b124779ead65a1af03c6dfa240f7c2f59a
 
 build:
   number: 0
