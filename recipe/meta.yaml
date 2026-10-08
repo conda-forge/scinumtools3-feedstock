@@ -6,8 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/vrtulka23/scinumtools3/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d6558464016b1379612e4dd17908d507f0db376bea17ff12dee8290e963d9852
+  - url: https://github.com/vrtulka23/scinumtools3/archive/refs/tags/v{{ version }}.tar.gz
+    sha256: d6558464016b1379612e4dd17908d507f0db376bea17ff12dee8290e963d9852
+  - url: https://github.com/vrtulka23/briefpp/archive/624aa478149a0fa0e7213bb7cfb6d19615d6e771.tar.gz
+    sha256: aaac2a8a25f8a7bc11546038594eb9fef43bf560c0c0532a886c432d5e14de31
+    folder: external/briefpp
 
 build:
   number: 0
@@ -17,13 +20,14 @@ build:
     - export CMAKE_GENERATOR=Ninja  # [unix]
 
     # Build and install
-    - {{ PYTHON }} -m pip install . --no-deps -vv --config-settings=cmake.define.ENABLE_UNIT_TESTS=ON --config-settings=build-dir=build
+    - {{ PYTHON }} -m pip install . --no-deps -vv --config-settings=cmake.define.ENABLE_UNIT_TESTS=ON --config-settings=cmake.define.ENABLE_SNT_REPORT=ON --config-settings=build-dir=build
 
     # Run CTest
     - ctest --test-dir build --output-on-failure  # [unix]
     - ctest --test-dir build -C Release --output-on-failure -V  # [win]
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - cmake >=3.24
@@ -35,6 +39,8 @@ requirements:
     - pytest
     - scikit-build-core
     - pybind11
+    - gtest
+    - hdf5
     - numpy
   run:
     - python
@@ -43,12 +49,16 @@ requirements:
 test:
   imports:
     - scinumtools3
+  commands:
+    - python -c "from scinumtools3.dip import Environment, ReportFormat; assert ReportFormat is not None and hasattr(Environment, 'generate_report')"
 
 about:
   home: https://github.com/vrtulka23/scinumtools3
   summary: Python bindings for the SciNumTools3 C++ numerical library.
   license: MIT
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - external/briefpp/LICENSE
 
 extra:
   recipe-maintainers:
