@@ -20,7 +20,8 @@ build:
     - export CMAKE_GENERATOR=Ninja  # [unix]
 
     # Build and install
-    - {{ PYTHON }} -m pip install . --no-deps -vv --config-settings=cmake.define.ENABLE_UNIT_TESTS=ON --config-settings=cmake.define.ENABLE_SNT_REPORT=ON --config-settings=build-dir=build
+    - {{ PYTHON }} -m pip install . --no-deps -vv --config-settings=cmake.define.ENABLE_UNIT_TESTS=ON --config-settings=cmake.define.ENABLE_SNT_REPORT=ON --config-settings="cmake.define.SNT_BRIEFPP_INCLUDE_DIR=${SRC_DIR}/external/briefpp/include" --config-settings=build-dir=build  # [unix]
+    - {{ PYTHON }} -m pip install . --no-deps -vv --config-settings=cmake.define.ENABLE_UNIT_TESTS=ON --config-settings=cmake.define.ENABLE_SNT_REPORT=ON --config-settings="cmake.define.SNT_BRIEFPP_INCLUDE_DIR=%SRC_DIR%\external\briefpp\include" --config-settings=build-dir=build  # [win]
 
     # Run CTest
     - ctest --test-dir build --output-on-failure  # [unix]
