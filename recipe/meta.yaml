@@ -13,7 +13,7 @@ source:
     folder: external/briefpp
 
 build:
-  number: 0
+  number: 1
   script:
     # Unix
     - export CMAKE_BUILD_PARALLEL_LEVEL=1  # [unix]
