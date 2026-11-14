@@ -1,5 +1,5 @@
 {% set name = "scinumtools3" %}
-{% set version = "0.10.1" %}
+{% set version = "0.10.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/vrtulka23/scinumtools3/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 088ff895ef31908db31c17d8f23ce09a4f1055134f6ae1f11a3687ccbda1c951
+    sha256: 44690c07c324e016495ca73b017c92c9e65bcfefba23f8ca9daacbd9fe12cd3b
   - url: https://github.com/vrtulka23/briefpp/archive/624aa478149a0fa0e7213bb7cfb6d19615d6e771.tar.gz
     sha256: aaac2a8a25f8a7bc11546038594eb9fef43bf560c0c0532a886c432d5e14de31
     folder: external/briefpp
